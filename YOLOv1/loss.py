@@ -74,7 +74,7 @@ class criterion(nn.Module):
 
         # no object loss use both the bounding boxes
         no_object_loss = self.mse(
-            torch.flatten((1 - exists_target) * predictions[..., 20:21]),
+            torch.flatten((1 - exists_target) * predictions[..., 20:21]),   # [N * S * S * 1]
             torch.flatten((1 - exists_target) * targets[..., 20:21])
         ) + self.mse(
             torch.flatten((1 - exists_target) * predictions[..., 25:26]),
